@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { 
     Container,
     CustomButton,
@@ -18,6 +19,22 @@ import LockIcon from '../../assets/lock.svg';
 import SignInput from "../../components/SignInput";
 
 export default ()=>{
+
+    const navigation = useNavigation();
+
+    const [emailField, setEmailField] = useState('');
+    const [passwordField, setPasswordField] = useState('');
+
+    const handleSignClick = () =>{
+
+    }
+
+    const handleMessageButtonClick = () => {
+        navigation.reset({
+            routes: [{name: 'SignUp'}]
+        });
+    }
+
     return(
         <Container>
             <BarberLogo width="100%" height="160"/>
@@ -26,23 +43,23 @@ export default ()=>{
             <SignInput
                     IconSvg={EmailIcon}
                     placeholder="Digite seu e-mail"
-                    // value={emailField}
-                    // onChangeText={t=>setEmailField(t)}
+                    value={emailField}
+                    onChangeText={t=>setEmailField(t)}
                 />
 
                 <SignInput
                     IconSvg={LockIcon}
                     placeholder="Digite sua senha"
-                    // value={passwordField}
-                    // onChangeText={t=>setPasswordField(t)}
-                    // password={true}
+                    value={passwordField}
+                    onChangeText={t=>setPasswordField(t)}
+                    password={true}
                 />
-                <CustomButton>
+                <CustomButton onPress={handleSignClick}>
                     <CustomButtonText>LOGIN</CustomButtonText>
                 </CustomButton>
             </InputArea>
 
-            <SignMessageButton>
+            <SignMessageButton onPress={handleMessageButtonClick}>
                 <SignMessageButtonText>Ainda não possui uma conta?</SignMessageButtonText>
                 <SignMessageButtonTextBold>Cadastre-se</SignMessageButtonTextBold>
             </SignMessageButton>
