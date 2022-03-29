@@ -38,7 +38,7 @@ export default ()=>{
 
     return(
         <Container>
-            <BarberLogo width="100%" height="160"/>
+            <BarberLogo width="100%" height="160" />
 
             <InputArea>
             <SignInput
